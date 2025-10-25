@@ -143,19 +143,6 @@ We gratefully acknowledge the original authors and maintainers of these educatio
 
 This project is intended for educational purposes. Please respect the licenses of any third-party datasets and models used.
 
-## 👨‍🏫 Instructor Notes
-
-### Teaching Tips
-1. **Start with visualization** - Use the plotting utilities to show concepts
-2. **Encourage experimentation** - Modify hyperparameters and architectures
-3. **Connect to history** - Reference the included research papers
-4. **Focus on intuition** - Explain the "why" behind each technique
-
-### Assessment Ideas
-- Implement extensions to the provided notebooks
-- Compare different architectures on the same task
-- Write explanations of the mathematical concepts
-- Create visualizations of the learning process
 
 ## 🔗 Related Resources
 
