@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Foundations to Transformers</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .notebook {
+            background: white;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 50px;
+            font-size: 1.2em;
+        }
+        
+        h2 {
+            color: #764ba2;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 50px;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #667eea;
+            margin-top: 30px;
+            font-size: 1.3em;
+        }
+        
+        .concept-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e7ff 100%);
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        .key-insight {
+            background: #fff9e6;
+            border: 3px solid #ffd700;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 10px;
+            font-size: 1.05em;
+        }
+        
+        .key-insight::before {
+            content: "💡 ";
+            font-size: 1.8em;
+        }
+        
+        .warning-box {
+            background: #ffe6e6;
+            border-left: 5px solid #ff6b6b;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        .warning-box::before {
+            content: "⚠️ ";
+            font-size: 1.5em;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .comparison-card {
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .bad-approach {
+            background: #ffe6e6;
+            border: 2px solid #ff6b6b;
+        }
+        
+        .good-approach {
+            background: #e6f7ff;
+            border: 2px solid #4dabf7;
+        }
+        
+        .visual-demo {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .formula {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #dee2e6;
+            font-size: 1.1em;
+        }
+        
+        .matrix-visual {
+            display: inline-block;
+            border: 2px solid #667eea;
+            padding: 15px;
+            margin: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        
+        .matrix-row {
+            display: flex;
+            gap: 10px;
+            margin: 5px 0;
+        }
+        
+        .matrix-cell {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e0e7ff;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .arrow {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin: 0 20px;
+            display: inline-block;
+        }
+        
+        .step-container {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .example-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        code {
+            background: #f1f3f5;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #c92a2a;
+        }
+        
+        .embedding-space {
+            width: 100%;
+            height: 350px;
+            margin: 20px 0;
+        }
+        
+        .attention-viz {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        
+        .attention-cell {
+            aspect-ratio: 1;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .layer-diagram {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .layer-box {
+            display: inline-block;
+            padding: 20px 40px;
+            margin: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .layer-input {
+            background: #4dabf7;
+        }
+        
+        .layer-hidden {
+            background: #667eea;
+        }
+        
+        .layer-output {
+            background: #764ba2;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 10px 0;
+        }
+        
+        .highlight {
+            background: #fff3bf;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .proof-box {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #667eea;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook">
+        <h1>From Foundations to Transformers</h1>
+        <div class="subtitle">A Visual Journey Through the Building Blocks of Modern AI</div>
+        
+        <!-- TABLE OF CONTENTS -->
+        <div class="concept-box">
+            <h3>📖 What We'll Cover</h3>
+            <ol>
+                <li><strong>Matrix Thinking</strong> - Why we think in transformations, not neurons</li>
+                <li><strong>Embeddings</strong> - From discrete symbols to geometric spaces</li>
+                <li><strong>Non-linearities</strong> - Why depth matters</li>
+                <li><strong>Normalization</strong> - Stabilizing the learning process</li>
+                <li><strong>Inductive Bias</strong> - Built-in assumptions that help learning</li>
+                <li><strong>RNN Limitations</strong> - Why we needed something better (BPTT, sequential bottleneck)</li>
+                <li><strong>Attention Mechanisms</strong> - Differentiable associative memory</li>
+                <li><strong>The Complete Picture</strong> - How it all comes together</li>
+            </ol>
+        </div>
+
+        <!-- SECTION 1: MATRIX THINKING -->
+        <h2>1. 🎯 Think in Matrices, Not Neurons</h2>
+        
+        <div class="comparison-grid">
+            <div class="comparison-card bad-approach">
+                <h3>❌ The Old Way: Neuron-by-Neuron</h3>
+                <div class="formula" style="font-size: 0.9em;">
+                    y₁ = σ(w₁₁x₁ + w₁₂x₂ + w₁₃x₃ + b₁)<br>
+                    y₂ = σ(w₂₁x₁ + w₂₂x₂ + w₂₃x₃ + b₂)<br>
+                    y₃ = σ(w₃₁x₁ + w₃₂x₂ + w₃₃x₃ + b₃)
+                </div>
+                <p><strong>Problems:</strong></p>
+                <ul>
+                    <li>Doesn't scale to thousands of neurons</li>
+                    <li>Obscures the geometry</li>
+                    <li>Inefficient implementation</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-card good-approach">
+                <h3>✅ The Right Way: Matrix Operations</h3>
+                <div class="formula">
+                    <strong>y = σ(Wx + b)</strong>
+                </div>
+                <p><strong>Benefits:</strong></p>
+                <ul>
+                    <li>Single geometric transformation</li>
+                    <li>GPU-optimized</li>
+                    <li>Scales to any size</li>
+                    <li>Clear mathematical structure</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="visual-demo">
+            <h3>Visualizing the Transformation: y = Wx</h3>
+            <div class="step-container">
+                <div style="text-align: center;">
+                    <p><strong>Weight Matrix W</strong></p>
+                    <div class="matrix-visual">
+                        <div class="matrix-row">
+                            <div class="matrix-cell">w₁₁</div>
+                            <div class="matrix-cell">w₁₂</div>
+                            <div class="matrix-cell">w₁₃</div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">w₂₁</div>
+                            <div class="matrix-cell">w₂₂</div>
+                            <div class="matrix-cell">w₂₃</div>
+                        </div>
+                    </div>
+                    <p style="color: #666; margin-top: 10px;"><strong>2×3</strong> matrix</p>
+                    <p style="color: #999; font-size: 0.9em;">(output_dim × input_dim)</p>
+                </div>
+                
+                <span class="arrow">×</span>
+                
+                <div style="text-align: center;">
+                    <p><strong>Input Vector x</strong></p>
+                    <div class="matrix-visual">
+                        <div class="matrix-row">
+                            <div class="matrix-cell">x₁</div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">x₂</div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">x₃</div>
+                        </div>
+                    </div>
+                    <p style="color: #666; margin-top: 10px;"><strong>3×1</strong> vector</p>
+                    <p style="color: #999; font-size: 0.9em;">3D space</p>
+                </div>
+                
+                <span class="arrow">=</span>
+                
+                <div style="text-align: center;">
+                    <p><strong>Output Vector y</strong></p>
+                    <div class="matrix-visual">
+                        <div class="matrix-row">
+                            <div class="matrix-cell">y₁</div>
+                        </div>
+                        <div class="matrix-row">
+                            <div class="matrix-cell">y₂</div>
+                        </div>
+                    </div>
+                    <p style="color: #666; margin-top: 10px;"><strong>2×1</strong> vector</p>
+                    <p style="color: #999; font-size: 0.9em;">2D space</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 25px; text-align: center; color: #666;">
+                <strong>The matrix W performs a geometric transformation:</strong> rotation, scaling, and projection from 3D → 2D
+            </p>
+        </div>
+        
+        <div class="key-insight">
+            <strong>Key Insight:</strong> Neural networks are <em>not</em> about individual neurons. They're about <span class="highlight">geometric transformations of vector spaces</span>. Each layer warps space to make patterns more separable.
+        </div>
+        
+        <h3>🎨 The Homogeneous Coordinate Trick</h3>
+        
+        <div class="example-box">
+            <p>We can absorb the bias <strong>b</strong> into the weight matrix <strong>W</strong> using a clever trick from computer graphics:</p>
+            
+            <div class="formula">
+                Standard: <strong>y = Wx + b</strong>
+            </div>
+            
+            <p style="text-align: center; margin: 20px 0;">becomes</p>
+            
+            <div class="formula">
+                Homogeneous: <strong>y = W̃x̃</strong><br><br>
+                where x̃ = [x; 1] and W̃ = [W | b]
+            </div>
+            
+            <p><strong>Why it matters:</strong> The entire layer is now a single linear transformation! This simplifies mathematical analysis and mirrors techniques from projective geometry used in computer graphics.</p>
+        </div>
+
+        <!-- SECTION 2: EMBEDDINGS -->
+        <h2>2. 🌐 Embeddings: From Discrete to Continuous</h2>
+        
+        <div class="concept-box">
+            <p><strong>Definition:</strong> An embedding maps discrete objects (words, tokens, images) to continuous vectors in ℝᵈ.</p>
+            <p style="margin-top: 15px;">Instead of representing "cat" as a one-hot vector [0,0,0,1,0,...], we represent it as a dense vector like [0.2, -0.5, 0.8, 0.1, ...]</p>
+        </div>
+        
+        <div class="visual-demo">
+            <h3>Word Embeddings in 2D (Conceptual)</h3>
+            <svg class="embedding-space" viewBox="0 0 800 350">
+                <!-- Background -->
+                <rect width="800" height="350" fill="#f8f9fa"/>
+                
+                <!-- Axes -->
+                <line x1="50" y1="300" x2="750" y2="300" stroke="#333" stroke-width="2"/>
+                <line x1="50" y1="300" x2="50" y2="50" stroke="#333" stroke-width="2"/>
+                <text x="400" y="330" text-anchor="middle" fill="#666">Dimension 1 (e.g., "royalty")</text>
+                <text x="20" y="175" text-anchor="middle" fill="#666" transform="rotate(-90, 20, 175)">Dimension 2 (e.g., "gender")</text>
+                
+                <!-- Word vectors -->
+                <!-- King -->
+                <circle cx="600" cy="120" r="10" fill="#667eea"/>
+                <text x="600" y="105" text-anchor="middle" font-weight="bold" fill="#667eea">King</text>
+                
+                <!-- Queen -->
+                <circle cx="580" cy="200" r="10" fill="#e06aa1"/>
+                <text x="580" y="225" text-anchor="middle" font-weight="bold" fill="#e06aa1">Queen</text>
+                
+                <!-- Man -->
+                <circle cx="250" cy="140" r="10" fill="#667eea"/>
+                <text x="250" y="125" text-anchor="middle" font-weight="bold" fill="#667eea">Man</text>
+                
+                <!-- Woman -->
+                <circle cx="230" cy="220" r="10" fill="#e06aa1"/>
+                <text x="230" y="245" text-anchor="middle" font-weight="bold" fill="#e06aa1">Woman</text>
+                
+                <!-- Cat -->
+                <circle cx="150" cy="250" r="10" fill="#51cf66"/>
+                <text x="150" y="270" text-anchor="middle" font-weight="bold" fill="#51cf66">Cat</text>
+                
+                <!-- Dog -->
+                <circle cx="180" cy="260" r="10" fill="#51cf66"/>
+                <text x="180" y="280" text-anchor="middle" font-weight="bold" fill="#51cf66">Dog</text>
+                
+                <!-- Paris -->
+                <circle cx="450" cy="180" r="10" fill="#ff922b"/>
+                <text x="450" y="165" text-anchor="middle" font-weight="bold" fill="#ff922b">Paris</text>
+                
+                <!-- France -->
+                <circle cx="480" cy="200" r="10" fill="#ff922b"/>
+                <text x="480" y="225" text-anchor="middle" font-weight="bold" fill="#ff922b">France</text>
+                
+                <!-- Arrows showing relationships -->
+                <path d="M 250 140 L 580 120" stroke="#667eea" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+                <text x="415" y="120" fill="#667eea" font-size="14">similar: both male royalty</text>
+                
+                <path d="M 150 250 L 180 260" stroke="#51cf66" stroke-width="2" stroke-dasharray="5,5" opacity="0.5"/>
+                <text x="140" y="240" fill="#51cf66" font-size="14">similar: both pets</text>
+            </svg>
+            <p style="text-align: center; color: #666; margin-top: 20px;">
+                Similar words cluster together! Similarity is measured by <strong>dot product</strong> or <strong>cosine distance</strong>.
+            </p>
+        </div>
+        
+        <h3>Why Vectors?</h3>
+        <div class="example-box">
+            <ol>
+                <li><strong>Geometric operations:</strong> Can compute distances, angles, and similarities
+                    <div class="formula">similarity(v₁, v₂) = v₁ · v₂ = Σᵢ v₁[i] × v₂[i]</div>
+                </li>
+                <li><strong>Differentiability:</strong> Enables gradient-based learning (backpropagation works!)</li>
+                <li><strong>Expressiveness:</strong> High dimensions capture multiple properties simultaneously
+                    <ul>
+                        <li>Dimension 1 might encode "royalty"</li>
+                        <li>Dimension 2 might encode "gender"</li>
+                        <li>Dimension 3 might encode "animacy"</li>
+                        <li>... and so on for hundreds of dimensions</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="key-insight">
+            <strong>Key Insight:</strong> Embeddings learned during training automatically organize semantically similar items near each other in vector space. The model learns <span class="highlight">what makes things similar</span> by observing them in similar contexts!
+        </div>
+
+        <!-- SECTION 3: NON-LINEARITIES -->
+        <h2>3. 🔄 The Necessity of Non-Linearities</h2>
+        
+        <div class="warning-box">
+            <strong>The Problem:</strong> Without non-linear activation functions, deep networks collapse to shallow linear models!
+        </div>
+        
+        <div class="proof-box">
+            <h3>Mathematical Proof</h3>
+            <p>Consider two linear layers stacked together:</p>
+            <div class="formula">
+                h₁ = W₁x + b₁<br>
+                h₂ = W₂h₁ + b₂
+            </div>
+            <p>Substitute h₁ into h₂:</p>
+            <div class="formula">
+                h₂ = W₂(W₁x + b₁) + b₂<br>
+                = (W₂W₁)x + (W₂b₁ + b₂)<br>
+                = <span class="highlight">W'x + b'</span>
+            </div>
+            <p><strong>Conclusion:</strong> Two linear layers = One linear layer. No matter how many layers you stack, it's still just linear!</p>
+        </div>
+        
+        <div class="visual-demo">
+            <h3>What Non-Linearities Provide</h3>
+            <div class="layer-diagram">
+                <div class="layer-box layer-input">Input Space</div>
+                <div class="arrow">→</div>
+                <div class="layer-box layer-hidden">Warp Space (σ)</div>
+                <div class="arrow">→</div>
+                <div class="layer-box layer-hidden">Warp Again (σ)</div>
+                <div class="arrow">→</div>
+                <div class="layer-box layer-output">Output Space</div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: #666;">
+                Each non-linearity <strong>warps</strong> the space, allowing the network to learn complex, curved decision boundaries
+            </p>
+        </div>
+        
+        <h3>Common Activation Functions</h3>
+        <table>
+            <tr>
+                <th>Function</th>
+                <th>Formula</th>
+                <th>Properties</th>
+                <th>Common Use</th>
+            </tr>
+            <tr>
+                <td><strong>ReLU</strong></td>
+                <td>max(0, x)</td>
+                <td>Fast, doesn't saturate for positive values</td>
+                <td>CNNs, MLPs</td>
+            </tr>
+            <tr>
+                <td><strong>GELU</strong></td>
+                <td>x · Φ(x)</td>
+                <td>Smooth, probabilistic interpretation</td>
+                <td><strong>Transformers</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Tanh</strong></td>
+                <td>tanh(x)</td>
+                <td>Zero-centered, but saturates</td>
+                <td>RNNs, LSTMs</td>
+            </tr>
+            <tr>
+                <td><strong>Softmax</strong></td>
+                <td>eˣⁱ / Σⱼ eˣʲ</td>
+                <td>Converts to probabilities</td>
+                <td>Output layers, attention</td>
+            </tr>
+        </table>
+
+        <!-- SECTION 4: NORMALIZATION -->
+        <h2>4. ⚖️ Normalization: Stabilizing Training</h2>
+        
+        <div class="concept-box">
+            <p><strong>The Problem: Internal Covariate Shift</strong></p>
+            <p>As the network trains, the distribution of activations in each layer keeps changing. This makes learning unstable because each layer must constantly adapt to a shifting input distribution.</p>
+        </div>
+        
+        <h3>Layer Normalization (Used in Transformers)</h3>
+        
+        <div class="example-box">
+            <p><strong>For each individual example</strong>, normalize across all features:</p>
+            <div class="formula">
+                μ = (1/d) Σᵢ xᵢ<br>
+                σ² = (1/d) Σᵢ (xᵢ - μ)²<br><br>
+                x̂ᵢ = (xᵢ - μ) / √(σ² + ε)<br><br>
+                output = γx̂ᵢ + β
+            </div>
+            <p style="margin-top: 20px;"><strong>What this does:</strong></p>
+            <ul>
+                <li>Centers the activations around 0</li>
+                <li>Scales them to unit variance</li>
+                <li>Learnable parameters γ and β allow the network to undo normalization if needed</li>
+            </ul>
+        </div>
+        
+        <h3>Why Layer Norm vs Batch Norm?</h3>
+        <div class="comparison-grid">
+            <div class="comparison-card" style="background: #f8f9fa; border: 2px solid #adb5bd;">
+                <h3>Batch Normalization</h3>
+                <p>Normalizes across the <strong>batch dimension</strong></p>
+                <ul>
+                    <li>✅ Good for CNNs</li>
+                    <li>✅ Exploits batch statistics</li>
+                    <li>❌ Batch-size dependent</li>
+                    <li>❌ Different behavior train/test</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-card good-approach">
+                <h3>Layer Normalization</h3>
+                <p>Normalizes across the <strong>feature dimension</strong></p>
+                <ul>
+                    <li>✅ <strong>Perfect for sequences</strong></li>
+                    <li>✅ Batch-size independent</li>
+                    <li>✅ Same behavior train/test</li>
+                    <li>✅ <strong>Used in Transformers</strong></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="key-insight">
+            <strong>Key Insight:</strong> Normalization acts like "resetting" the activation distribution at each layer, making training more stable and allowing higher learning rates. It's especially crucial for <span class="highlight">very deep networks</span>.
+        </div>
+
+        <!-- SECTION 5: INDUCTIVE BIAS -->
+        <h2>5. 🧩 Inductive Bias: Built-in Assumptions</h2>
+        
+        <div class="concept-box">
+            <p><strong>Definition:</strong> Inductive bias refers to assumptions built into the architecture that guide the model toward certain solutions.</p>
+            <p style="margin-top: 15px;"><strong>Why needed?</strong> Without bias, a learner treats all possible functions equally. With limited data, this makes learning impossible. Good biases match the problem structure!</p>
+        </div>
+        
+        <h3>Inductive Biases in Different Architectures</h3>
+        
+        <table>
+            <tr>
+                <th>Architecture</th>
+                <th>Inductive Bias</th>
+                <th>Assumption</th>
+            </tr>
+            <tr>
+                <td><strong>CNNs</strong></td>
+                <td>Spatial locality + Translation invariance</td>
+                <td>Features useful in one image region work elsewhere</td>
+            </tr>
+            <tr>
+                <td><strong>RNNs</strong></td>
+                <td>Temporal locality</td>
+                <td>Recent inputs matter more than distant past</td>
+            </tr>
+            <tr>
+                <td><strong>Transformers</strong></td>
+                <td>Content-based similarity</td>
+                <td>Related items should attend to each other</td>
+            </tr>
+        </table>
+        
+        <div class="example-box">
+            <h3>🎯 The Q·Kᵀ Inductive Bias</h3>
+            <p>In attention mechanisms, the <code>Q·Kᵀ</code> formulation embeds a powerful inductive bias:</p>
+            <div class="formula">
+                Attention(Q, K, V) = softmax(QKᵀ / √d_k)V
+            </div>
+            <p><strong>What this says:</strong> "Relevance between tokens is determined by <span class="highlight">similarity in learned embedding space</span>."</p>
+            <p style="margin-top: 15px;">The network doesn't learn relevance from scratch—it learns <em>what features make tokens relevant to each other</em>. Much more efficient!</p>
+        </div>
+        
+        <h3>Parameter Sharing = Inductive Bias</h3>
+        <div class="visual-demo">
+            <p><strong>Example:</strong> CNNs use the same convolutional filters across the entire image.</p>
+            <div style="display: flex; justify-content: space-around; margin: 30px 0; align-items: center;">
+                <div style="text-align: center;">
+                    <p><strong>Without Sharing</strong></p>
+                    <p style="font-size: 2em; color: #ff6b6b;">❌</p>
+                    <p>Different weights for<br>each image position</p>
+                    <p style="color: #666; margin-top: 10px;">Millions of parameters,<br>poor generalization</p>
+                </div>
+                <div style="text-align: center;">
+                    <p><strong>With Sharing</strong></p>
+                    <p style="font-size: 2em; color: #51cf66;">✅</p>
+                    <p>Same weights applied<br>everywhere</p>
+                    <p style="color: #666; margin-top: 10px;">Few parameters,<br>learns general features</p>
+                </div>
+            </div>
+            <p style="text-align: center; color: #666; margin-top: 20px;">
+                <strong>Benefit:</strong> The model is <em>forced</em> to learn features that work everywhere, leading to better generalization!
+            </p>
+        </div>
+
+        <!-- SECTION 6: RNN LIMITATIONS -->
+        <h2>6. 🔗 The Limitations of RNNs</h2>
+        
+        <div class="concept-box">
+            <p><strong>Recurrent Neural Networks (RNNs)</strong> were the dominant architecture for sequence modeling before transformers. But they had critical limitations that transformers were designed to overcome.</p>
+        </div>
+        
+        <h3>How RNNs Process Sequences</h3>
+        
+        <div class="visual-demo">
+            <h4 style="text-align: center;">Sequential Processing in RNNs</h4>
+            <div style="display: flex; align-items: center; justify-content: center; margin: 40px 0; flex-wrap: wrap; gap: 15px;">
+                <!-- Step 1 -->
+                <div style="text-align: center;">
+                    <div class="layer-box layer-input" style="margin: 0;">x₁</div>
+                    <div style="margin: 10px 0; font-size: 1.5em; color: #764ba2;">↓</div>
+                    <div class="layer-box layer-hidden" style="margin: 0;">h₁</div>
+                </div>
+                
+                <span style="font-size: 2em; color: #764ba2; margin: 0 10px;">→</span>
+                
+                <!-- Step 2 -->
+                <div style="text-align: center;">
+                    <div class="layer-box layer-input" style="margin: 0;">x₂</div>
+                    <div style="margin: 10px 0; font-size: 1.5em; color: #764ba2;">↓</div>
+                    <div class="layer-box layer-hidden" style="margin: 0;">h₂</div>
+                </div>
+                
+                <span style="font-size: 2em; color: #764ba2; margin: 0 10px;">→</span>
+                
+                <!-- Step 3 -->
+                <div style="text-align: center;">
+                    <div class="layer-box layer-input" style="margin: 0;">x₃</div>
+                    <div style="margin: 10px 0; font-size: 1.5em; color: #764ba2;">↓</div>
+                    <div class="layer-box layer-hidden" style="margin: 0;">h₃</div>
+                </div>
+                
+                <span style="font-size: 2em; color: #764ba2; margin: 0 10px;">→</span>
+                
+                <!-- Step 4 -->
+                <div style="text-align: center;">
+                    <div class="layer-box layer-input" style="margin: 0;">x₄</div>
+                    <div style="margin: 10px 0; font-size: 1.5em; color: #764ba2;">↓</div>
+                    <div class="layer-box layer-hidden" style="margin: 0;">h₄</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: #666;">
+                <strong>Sequential dependency:</strong> Each hidden state <strong>h<sub>t</sub></strong> depends on the previous state <strong>h<sub>t-1</sub></strong><br>
+                Formula: <code>h<sub>t</sub> = tanh(W<sub>hh</sub> · h<sub>t-1</sub> + W<sub>xh</sub> · x<sub>t</sub> + b)</code>
+            </p>
+            <div style="margin-top: 25px; padding: 20px; background: #ffe6e6; border-radius: 8px; border-left: 4px solid #ff6b6b;">
+                <p style="text-align: center; font-weight: bold; color: #c92a2a;">
+                    ⚠️ Must process one token at a time - can't compute h₃ until h₂ is complete!
+                </p>
+            </div>
+        </div>
+        
+        <h3>⚠️ Problem 1: Sequential Bottleneck</h3>
+        
+        <div class="comparison-grid">
+            <div class="comparison-card bad-approach">
+                <h3>❌ RNNs: Sequential Processing</h3>
+                <p><strong>Must process tokens one at a time:</strong></p>
+                <ul>
+                    <li>Can't compute h₃ until h₂ is done</li>
+                    <li>Can't compute h₂ until h₁ is done</li>
+                    <li>No parallelization possible!</li>
+                </ul>
+                <div class="formula" style="font-size: 0.9em;">
+                    Time: O(n) sequential steps<br>
+                    (where n = sequence length)
+                </div>
+                <p style="margin-top: 15px;"><strong>Result:</strong> Slow training and inference, especially for long sequences.</p>
+            </div>
+            
+            <div class="comparison-card good-approach">
+                <h3>✅ Transformers: Parallel Processing</h3>
+                <p><strong>Process all tokens simultaneously:</strong></p>
+                <ul>
+                    <li>All attention scores computed at once</li>
+                    <li>Fully parallelizable on GPUs!</li>
+                    <li>Training time independent of sequence length</li>
+                </ul>
+                <div class="formula" style="font-size: 0.9em;">
+                    Time: O(1) sequential steps<br>
+                    (constant depth!)
+                </div>
+                <p style="margin-top: 15px;"><strong>Result:</strong> 10-100x faster training on modern hardware.</p>
+            </div>
+        </div>
+        
+        <h3>⚠️ Problem 2: Vanishing/Exploding Gradients (BPTT)</h3>
+        
+        <div class="warning-box">
+            <strong>Backpropagation Through Time (BPTT)</strong> is how RNNs learn. But it has serious gradient problems for long sequences!
+        </div>
+        
+        <div class="example-box">
+            <h4>How BPTT Works</h4>
+            <p>To update weights, gradients must flow backward through time:</p>
+            <div class="formula">
+                ∂L/∂W = ∂L/∂h_n · ∂h_n/∂h_(n-1) · ∂h_(n-1)/∂h_(n-2) · ... · ∂h_2/∂h_1 · ∂h_1/∂W
+            </div>
+            <p style="margin-top: 20px;"><strong>The Problem:</strong> This is a chain of matrix multiplications!</p>
+            
+            <div style="margin: 30px 0; padding: 25px; background: #f8f9fa; border-radius: 10px;">
+                <p><strong>If gradients &lt; 1:</strong> Multiplying many times → gradients vanish exponentially</p>
+                <div class="formula">
+                    0.9 × 0.9 × 0.9 × ... × 0.9 (50 times) ≈ 0.005
+                </div>
+                <p style="color: #666; margin-top: 10px;">The network can't learn long-range dependencies!</p>
+                
+                <p style="margin-top: 30px;"><strong>If gradients &gt; 1:</strong> Multiplying many times → gradients explode</p>
+                <div class="formula">
+                    1.1 × 1.1 × 1.1 × ... × 1.1 (50 times) ≈ 117
+                </div>
+                <p style="color: #666; margin-top: 10px;">Training becomes unstable!</p>
+            </div>
+        </div>
+        
+        <div class="visual-demo">
+            <h4 style="text-align: center;">Gradient Flow Comparison</h4>
+            <svg viewBox="0 0 800 300" style="width: 100%; height: 300px;">
+                <!-- RNN gradient flow (fading) -->
+                <text x="50" y="30" font-size="16" font-weight="bold" fill="#ff6b6b">RNN: Gradient Fades Over Time</text>
+                <circle cx="700" cy="80" r="15" fill="#ff6b6b" opacity="1"/>
+                <text x="700" y="115" text-anchor="middle" font-size="12">h_n</text>
+                
+                <line x1="680" y1="80" x2="620" y2="80" stroke="#ff6b6b" stroke-width="3" opacity="0.9"/>
+                <circle cx="600" cy="80" r="15" fill="#ff6b6b" opacity="0.9"/>
+                <text x="600" y="115" text-anchor="middle" font-size="12">h_4</text>
+                
+                <line x1="580" y1="80" x2="520" y2="80" stroke="#ff6b6b" stroke-width="3" opacity="0.7"/>
+                <circle cx="500" cy="80" r="15" fill="#ff6b6b" opacity="0.7"/>
+                <text x="500" y="115" text-anchor="middle" font-size="12">h_3</text>
+                
+                <line x1="480" y1="80" x2="420" y2="80" stroke="#ff6b6b" stroke-width="3" opacity="0.5"/>
+                <circle cx="400" cy="80" r="15" fill="#ff6b6b" opacity="0.5"/>
+                <text x="400" y="115" text-anchor="middle" font-size="12">h_2</text>
+                
+                <line x1="380" y1="80" x2="320" y2="80" stroke="#ff6b6b" stroke-width="3" opacity="0.3"/>
+                <circle cx="300" cy="80" r="15" fill="#ff6b6b" opacity="0.3"/>
+                <text x="300" y="115" text-anchor="middle" font-size="12">h_1</text>
+                
+                <text x="150" y="85" font-size="14" fill="#999" opacity="0.5">← Gradient vanishes</text>
+                
+                <!-- Transformer gradient flow (constant) -->
+                <text x="50" y="180" font-size="16" font-weight="bold" fill="#51cf66">Transformer: Direct Gradient Paths</text>
+                <circle cx="700" cy="230" r="15" fill="#51cf66"/>
+                <text x="700" y="265" text-anchor="middle" font-size="12">t_n</text>
+                
+                <line x1="685" y1="230" x2="615" y2="230" stroke="#51cf66" stroke-width="3"/>
+                <circle cx="600" cy="230" r="15" fill="#51cf66"/>
+                <text x="600" y="265" text-anchor="middle" font-size="12">t_4</text>
+                
+                <line x1="585" y1="230" x2="515" y2="230" stroke="#51cf66" stroke-width="3"/>
+                <circle cx="500" cy="230" r="15" fill="#51cf66"/>
+                <text x="500" y="265" text-anchor="middle" font-size="12">t_3</text>
+                
+                <line x1="485" y1="230" x2="415" y2="230" stroke="#51cf66" stroke-width="3"/>
+                <circle cx="400" cy="230" r="15" fill="#51cf66"/>
+                <text x="400" y="265" text-anchor="middle" font-size="12">t_2</text>
+                
+                <line x1="385" y1="230" x2="315" y2="230" stroke="#51cf66" stroke-width="3"/>
+                <circle cx="300" cy="230" r="15" fill="#51cf66"/>
+                <text x="300" y="265" text-anchor="middle" font-size="12">t_1</text>
+                
+                <!-- Direct connections in transformer -->
+                <path d="M 700 235 Q 650 260, 600 235" stroke="#51cf66" stroke-width="1" stroke-dasharray="3,3" fill="none" opacity="0.5"/>
+                <path d="M 700 235 Q 650 265, 500 235" stroke="#51cf66" stroke-width="1" stroke-dasharray="3,3" fill="none" opacity="0.5"/>
+                <path d="M 700 235 Q 650 270, 300 235" stroke="#51cf66" stroke-width="1" stroke-dasharray="3,3" fill="none" opacity="0.5"/>
+                
+                <text x="120" y="235" font-size="14" fill="#51cf66">← All connections preserved!</text>
+            </svg>
+            <p style="text-align: center; color: #666; margin-top: 20px;">
+                <strong>RNNs:</strong> Gradients fade exponentially with distance<br>
+                <strong>Transformers:</strong> Every token has a direct connection to every other token!
+            </p>
+        </div>
+        
+        <h3>⚠️ Problem 3: Information Bottleneck</h3>
+        
+        <div class="example-box">
+            <p><strong>In RNNs, all information must flow through a fixed-size hidden state:</strong></p>
+            
+            <div class="formula">
+                h_t = f(h_(t-1), x_t)
+            </div>
+            
+            <p style="margin-top: 20px;"><strong>The problem:</strong> The hidden state <code>h_t</code> must compress the entire history of the sequence!</p>
+            
+            <div style="margin: 25px 0; padding: 20px; background: #ffe6e6; border-radius: 8px; border-left: 4px solid #ff6b6b;">
+                <p><strong>Example: Machine Translation</strong></p>
+                <p style="margin: 15px 0;">English: "The agreement on the European Economic Area was signed in August 1992."</p>
+                <p>Must be compressed into a single vector before decoding!</p>
+                <p style="color: #666; margin-top: 15px;">For long sentences, critical information gets lost in compression.</p>
+            </div>
+            
+            <p><strong>Transformers solve this:</strong> Every token can directly access every other token via attention. No compression needed!</p>
+        </div>
+        
+        <h3>Solutions: LSTMs and GRUs</h3>
+        
+        <div class="concept-box">
+            <p><strong>LSTMs (1997) and GRUs (2014)</strong> partially address vanishing gradients with gating mechanisms:</p>
+            <ul>
+                <li><strong>Cell state:</strong> Dedicated "highway" for information flow</li>
+                <li><strong>Gates:</strong> Learn what to remember and forget</li>
+                <li><strong>Improvement:</strong> Can learn longer dependencies (~100-200 tokens)</li>
+            </ul>
+            <p style="margin-top: 20px;"><strong>But still limited by:</strong></p>
+            <ul>
+                <li>Sequential processing (can't parallelize)</li>
+                <li>Fixed-size bottleneck</li>
+                <li>Gradients still degrade over very long distances</li>
+            </ul>
+        </div>
+        
+        <h3>Enter: Attention for RNNs (2014-2015)</h3>
+        
+        <div class="example-box">
+            <p><strong>Breakthrough idea:</strong> Let the decoder attend to <em>all</em> encoder hidden states, not just the last one!</p>
+            
+            <div class="formula">
+                score_i = h_decoder · h_encoder_i<br>
+                α_i = softmax(score_i)<br>
+                context = Σ α_i · h_encoder_i
+            </div>
+            
+            <p style="margin-top: 20px;"><strong>This helped:</strong></p>
+            <ul>
+                <li>✅ No fixed-length bottleneck</li>
+                <li>✅ Model learns what to attend to</li>
+                <li>✅ Major improvement for machine translation</li>
+            </ul>
+            
+            <p style="margin-top: 20px;"><strong>But still problematic:</strong></p>
+            <ul>
+                <li>❌ Encoder still processes sequentially</li>
+                <li>❌ Decoder still processes sequentially</li>
+                <li>❌ BPTT gradient issues remain</li>
+            </ul>
+        </div>
+        
+        <div class="key-insight">
+            <strong>The Key Realization:</strong> What if we <span class="highlight">removed the recurrence entirely</span> and used <em>only</em> attention? This would give us:
+            <ul style="margin-top: 10px;">
+                <li>✅ Full parallelization</li>
+                <li>✅ Direct gradient paths (no vanishing)</li>
+                <li>✅ No sequential bottleneck</li>
+            </ul>
+            <p style="margin-top: 15px;">This realization led to the <strong>Transformer architecture</strong> in 2017! 🚀</p>
+        </div>
+        
+        <h3>Transformers: The "Stateless" Revolution</h3>
+        
+        <table>
+            <tr>
+                <th>Aspect</th>
+                <th>RNNs/LSTMs</th>
+                <th>Transformers</th>
+            </tr>
+            <tr>
+                <td><strong>Processing</strong></td>
+                <td>Sequential (one token at a time)</td>
+                <td>Parallel (all tokens at once)</td>
+            </tr>
+            <tr>
+                <td><strong>Memory</strong></td>
+                <td>Hidden state (compressed)</td>
+                <td>Attention to all tokens (no compression)</td>
+            </tr>
+            <tr>
+                <td><strong>Gradient Flow</strong></td>
+                <td>Chain through time (vanishing)</td>
+                <td>Direct paths (stable)</td>
+            </tr>
+            <tr>
+                <td><strong>Long Dependencies</strong></td>
+                <td>Limited (~100-200 tokens)</td>
+                <td>Excellent (thousands of tokens)</td>
+            </tr>
+            <tr>
+                <td><strong>Training Speed</strong></td>
+                <td>Slow (sequential)</td>
+                <td>Fast (parallelizable)</td>
+            </tr>
+            <tr>
+                <td><strong>Inductive Bias</strong></td>
+                <td>Recency (recent = important)</td>
+                <td>Similarity (related = important)</td>
+            </tr>
+        </table>
+
+        <!-- SECTION 7: ATTENTION MECHANISMS -->
+        <h2>7. 👀 Attention Mechanisms: Differentiable Memory</h2>
+        
+        <div class="key-insight">
+            <strong>Core Idea:</strong> Attention is a <span class="highlight">soft, differentiable version of associative memory</span>. Instead of retrieving one stored pattern (like Hopfield networks), attention blends all patterns weighted by their relevance!
+        </div>
+        
+        <h3>Why Q·Kᵀ Instead of MLP?</h3>
+        
+        <div class="comparison-grid">
+            <div class="comparison-card bad-approach">
+                <h3>🤔 MLP/Hypernetwork Approach</h3>
+                <div class="formula" style="font-size: 0.9em;">
+                    A = MLP([x₁, x₂, ..., xₙ])
+                </div>
+                <p style="margin-top: 15px;"><strong>This is actually a valid approach!</strong> (Called a "hypernetwork")</p>
+                <p style="margin-top: 15px;"><strong>Why it's less common:</strong></p>
+                <ul>
+                    <li><strong>Harder to optimize:</strong> More complex loss landscape</li>
+                    <li><strong>Less sample-efficient:</strong> Needs more data to learn attention patterns</li>
+                    <li><strong>No built-in similarity bias:</strong> Must learn from scratch what "relevance" means</li>
+                    <li><strong>Computational overhead:</strong> MLPs are slower than matrix multiplication</li>
+                    <li><strong>Fixed input length</strong> (for vanilla MLPs without tricks)</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-card good-approach">
+                <h3>✅ Q·Kᵀ Attention</h3>
+                <div class="formula" style="font-size: 0.9em;">
+                    A = softmax(QKᵀ/√d_k)
+                </div>
+                <p style="margin-top: 15px;"><strong>Why this works better:</strong></p>
+                <ul>
+                    <li><strong>Easy to optimize:</strong> Nice gradient properties, dot product is smooth</li>
+                    <li><strong>Sample-efficient:</strong> Similarity bias gives good starting point</li>
+                    <li><strong>Theoretically motivated:</strong> Dot product naturally measures similarity in embedding space</li>
+                    <li><strong>Computationally efficient:</strong> Matrix multiplication is highly optimized on GPUs</li>
+                    <li><strong>Variable length:</strong> Naturally handles any sequence length</li>
+                    <li><strong>O(d²) parameters:</strong> For W_q, W_k, W_v projection matrices</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="concept-box" style="margin-top: 25px;">
+            <h4>💡 The Real Story</h4>
+            <p>MLP-based attention (hypernetworks) <em>can</em> work and are occasionally used in research. However, Q·K^T won because it's <span class="highlight">simple, efficient, and provides the right inductive bias</span> that makes learning easier.</p>
+            <p style="margin-top: 15px;">The dot product naturally encodes the idea that <strong>"similar things should attend to each other"</strong> - the network just needs to learn <em>what features make things similar</em>, not the entire concept of relevance from scratch.</p>
+            <p style="margin-top: 15px;"><strong>Think of it as:</strong> Q·K^T gives the model a head start with a sensible default (similarity-based attention), while MLPs start from a blank slate and must figure everything out.</p>
+        </div>
+        
+        <h3>Attention Step-by-Step</h3>
+        
+        <div class="visual-demo">
+            <h4 style="text-align: center; margin-bottom: 20px;">Computing Attention for One Query</h4>
+            
+            <div style="margin: 30px 0;">
+                <p><strong>Step 1:</strong> Project input tokens to Q, K, V spaces</p>
+                <div class="formula">
+                    Q = XW_q, &nbsp; K = XW_k, &nbsp; V = XW_v
+                </div>
+                <p style="color: #666; margin-top: 10px;">Each token gets a query vector, key vector, and value vector</p>
+            </div>
+            
+            <div style="margin: 30px 0;">
+                <p><strong>Step 2:</strong> Compute attention scores (dot products)</p>
+                <div class="formula">
+                    scores = QKᵀ / √d_k
+                </div>
+                <p style="color: #666; margin-top: 10px;">Higher dot product = more similar = more relevant</p>
+            </div>
+            
+            <div style="margin: 30px 0;">
+                <p><strong>Step 3:</strong> Convert to probabilities</p>
+                <div class="formula">
+                    attention_weights = softmax(scores)
+                </div>
+                <p style="color: #666; margin-top: 10px;">Now weights sum to 1 and represent "how much to attend"</p>
+            </div>
+            
+            <div style="margin: 30px 0;">
+                <p><strong>Step 4:</strong> Weighted sum of values</p>
+                <div class="formula">
+                    output = attention_weights · V
+                </div>
+                <p style="color: #666; margin-top: 10px;">Blend the value vectors according to attention weights</p>
+            </div>
+        </div>
+        
+        <h3>Example: Attention in a Sentence</h3>
+        
+        <div class="example-box">
+            <p><strong>Sentence:</strong> "The cat sat on the mat"</p>
+            <p style="margin: 20px 0;">When processing the word <span class="highlight">"sat"</span>, attention might look like:</p>
+            
+            <div class="attention-viz">
+                <div class="attention-cell" style="background: #e3f2fd;">The</div>
+                <div class="attention-cell" style="background: #90caf9; font-weight: bold;">cat</div>
+                <div class="attention-cell" style="background: #1976d2; color: white; font-weight: bold;">sat</div>
+                <div class="attention-cell" style="background: #e3f2fd;">on</div>
+                <div class="attention-cell" style="background: #e3f2fd;">the</div>
+                
+                <div class="attention-cell" style="font-size: 0.8em;">0.05</div>
+                <div class="attention-cell" style="font-size: 0.8em;">0.45</div>
+                <div class="attention-cell" style="font-size: 0.8em; background: #fff9e6;"><strong>0.35</strong></div>
+                <div class="attention-cell" style="font-size: 0.8em;">0.10</div>
+                <div class="attention-cell" style="font-size: 0.8em;">0.05</div>
+                
+                <div class="attention-cell" style="background: #f8f9fa; font-size: 0.75em;">Low</div>
+                <div class="attention-cell" style="background: #f8f9fa; font-size: 0.75em;">High!</div>
+                <div class="attention-cell" style="background: #f8f9fa; font-size: 0.75em;">Self</div>
+                <div class="attention-cell" style="background: #f8f9fa; font-size: 0.75em;">Low</div>
+                <div class="attention-cell" style="background: #f8f9fa; font-size: 0.75em;">Low</div>
+            </div>
+            
+            <p style="margin-top: 20px;"><strong>Interpretation:</strong> "sat" attends most strongly to "cat" (the subject performing the action) and itself. The model learns these patterns automatically!</p>
+        </div>
+        
+        <h3>Why Separate K and V?</h3>
+        
+        <div class="concept-box">
+            <p>The key-value separation is crucial:</p>
+            <ul>
+                <li><strong>Keys (K):</strong> Define what makes tokens <em>relevant</em> (addressing space)</li>
+                <li><strong>Values (V):</strong> Define what <em>information</em> to extract (content space)</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Example:</strong> "Attend to tokens that are VERBS (key property), but retrieve their TENSE information (value property)."</p>
+            <p style="margin-top: 15px;">This separation allows the model to learn: <span class="highlight">"attend based on property X, retrieve based on property Y"</span> which would be impossible if K = V.</p>
+        </div>
+        
+        <h3>Multi-Head Attention</h3>
+        
+        <div class="visual-demo">
+            <p><strong>Instead of one attention mechanism, run multiple in parallel!</strong></p>
+            
+            <div style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
+                <div style="text-align: center; margin: 10px;">
+                    <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; border: 2px solid #1976d2;">
+                        <strong>Head 1</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">Syntax relations</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin: 10px;">
+                    <div style="background: #f3e5f5; padding: 20px; border-radius: 10px; border: 2px solid #7b1fa2;">
+                        <strong>Head 2</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">Semantic relations</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin: 10px;">
+                    <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; border: 2px solid #388e3c;">
+                        <strong>Head 3</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">Positional relations</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin: 10px;">
+                    <div style="background: #fff3e0; padding: 20px; border-radius: 10px; border: 2px solid #f57c00;">
+                        <strong>Head 4</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">Coreference</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; color: #666; margin-top: 20px;">
+                Each head can specialize in different types of relationships!<br>
+                Outputs are concatenated and projected to final dimension.
+            </p>
+        </div>
+        
+        <h3>Computational Complexity</h3>
+        
+        <table>
+            <tr>
+                <th>Aspect</th>
+                <th>Complexity</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>Parameters</td>
+                <td>O(d²)</td>
+                <td>For W_q, W_k, W_v matrices</td>
+            </tr>
+            <tr>
+                <td>Computation</td>
+                <td>O(n²d)</td>
+                <td>Dominated by QKᵀ multiplication</td>
+            </tr>
+            <tr>
+                <td>Memory</td>
+                <td>O(n²)</td>
+                <td>Storing attention matrix</td>
+            </tr>
+        </table>
+        
+        <div class="warning-box">
+            <strong>The Quadratic Bottleneck:</strong> O(n²) complexity in sequence length is attention's main limitation for very long sequences. This is why we see innovations like sparse attention, linear attention, and efficient transformers!
+        </div>
+
+        <!-- SECTION 8: THE COMPLETE PICTURE -->
+        <h2>8. 🎯 The Complete Picture: How It All Comes Together</h2>
+        
+        <div class="key-insight">
+            <strong>The Big Picture:</strong> Transformers aren't magic—they're the elegant result of decades of research combining the right building blocks in the right way.
+        </div>
+        
+        <div class="visual-demo" style="background: linear-gradient(135deg, #e0e7ff 0%, #f3e7ff 100%);">
+            <h3 style="text-align: center; color: #667eea;">The Transformer Stack</h3>
+            
+            <div style="margin: 30px auto; max-width: 600px;">
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #667eea;">
+                    <strong>1. Token Embeddings</strong>
+                    <p style="color: #666; margin: 5px 0;">Map discrete tokens to continuous vectors in ℝᵈ</p>
+                    <p style="font-size: 0.9em; color: #999;">→ Enables geometric operations and gradients</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #667eea;">
+                    <strong>2. Positional Encoding</strong>
+                    <p style="color: #666; margin: 5px 0;">Add position information (transformers have no inherent ordering)</p>
+                    <p style="font-size: 0.9em; color: #999;">→ Allows model to use word order</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #764ba2;">
+                    <strong>3. Multi-Head Self-Attention</strong>
+                    <p style="color: #666; margin: 5px 0;">Tokens attend to each other based on learned similarity</p>
+                    <p style="font-size: 0.9em; color: #999;">→ Captures relationships and context</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #667eea;">
+                    <strong>4. Layer Normalization</strong>
+                    <p style="color: #666; margin: 5px 0;">Stabilize activation distributions</p>
+                    <p style="font-size: 0.9em; color: #999;">→ Enables stable training of deep networks</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #667eea;">
+                    <strong>5. Residual Connections</strong>
+                    <p style="color: #666; margin: 5px 0;">Add input to output: output = Layer(x) + x</p>
+                    <p style="font-size: 0.9em; color: #999;">→ Gradient highways for deep networks</p>
+                </div>
+                
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #764ba2;">
+                    <strong>6. Feed-Forward Network</strong>
+                    <p style="color: #666; margin: 5px 0;">Position-wise MLP with non-linearity (usually GELU)</p>
+                    <p style="font-size: 0.9em; color: #999;">→ Adds representational capacity</p>
+                </div>
+                
+                <div style="text-align: center; margin: 20px 0; color: #764ba2; font-size: 1.5em;">
+                    ⟳ Repeat N times (e.g., 12 or 24 layers)
+                </div>
+                
+                <div style="background: white; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 5px solid #ffd700;">
+                    <strong>7. Output Layer</strong>
+                    <p style="color: #666; margin: 5px 0;">Project to vocabulary, apply softmax</p>
+                    <p style="font-size: 0.9em; color: #999;">→ Probability distribution over next token</p>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Why Each Component Matters</h3>
+        
+        <div class="example-box">
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Purpose</th>
+                    <th>Without It...</th>
+                </tr>
+                <tr>
+                    <td><strong>Embeddings</strong></td>
+                    <td>Geometric representation</td>
+                    <td>Can't compute similarities or gradients</td>
+                </tr>
+                <tr>
+                    <td><strong>Non-linearities</strong></td>
+                    <td>Enable depth</td>
+                    <td>Network collapses to single linear layer</td>
+                </tr>
+                <tr>
+                    <td><strong>Layer Norm</strong></td>
+                    <td>Training stability</td>
+                    <td>Gradients explode/vanish, training fails</td>
+                </tr>
+                <tr>
+                    <td><strong>Residuals</strong></td>
+                    <td>Gradient flow</td>
+                    <td>Can't train deep networks effectively</td>
+                </tr>
+                <tr>
+                    <td><strong>Q·Kᵀ Attention</strong></td>
+                    <td>Efficient similarity</td>
+                    <td>O(n²) parameters, can't generalize length</td>
+                </tr>
+                <tr>
+                    <td><strong>K-V Separation</strong></td>
+                    <td>Flexible retrieval</td>
+                    <td>Can't decouple "relevance" from "content"</td>
+                </tr>
+                <tr>
+                    <td><strong>Multi-head</strong></td>
+                    <td>Multiple perspectives</td>
+                    <td>Limited relationship modeling</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h3>From Hopfield to Transformers: The Arc of Progress</h3>
+        
+        <div class="visual-demo">
+            <svg viewBox="0 0 900 280" style="width: 100%; height: 280px;">
+                <!-- Timeline arrow -->
+                <defs>
+                    <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#667eea"/>
+                    </marker>
+                </defs>
+                <line x1="50" y1="140" x2="850" y2="140" stroke="#667eea" stroke-width="3" marker-end="url(#arrowhead2)"/>
+                
+                <!-- Milestones -->
+                <circle cx="80" cy="140" r="10" fill="#667eea"/>
+                <text x="80" y="170" text-anchor="middle" font-size="13" font-weight="bold">1982</text>
+                <text x="80" y="190" text-anchor="middle" font-size="11">Hopfield</text>
+                <text x="80" y="115" text-anchor="middle" font-size="10" fill="#666">Hard</text>
+                <text x="80" y="127" text-anchor="middle" font-size="10" fill="#666">retrieval</text>
+                
+                <circle cx="250" cy="140" r="10" fill="#667eea"/>
+                <text x="250" y="170" text-anchor="middle" font-size="13" font-weight="bold">2014</text>
+                <text x="250" y="190" text-anchor="middle" font-size="11">NTM</text>
+                <text x="250" y="115" text-anchor="middle" font-size="10" fill="#666">Soft</text>
+                <text x="250" y="127" text-anchor="middle" font-size="10" fill="#666">attention</text>
+                
+                <circle cx="380" cy="140" r="10" fill="#764ba2"/>
+                <text x="380" y="170" text-anchor="middle" font-size="13" font-weight="bold">2014-15</text>
+                <text x="380" y="190" text-anchor="middle" font-size="11" fill="#764ba2">RNN+Attn</text>
+                <text x="380" y="110" text-anchor="middle" font-size="10" fill="#666">Seq2Seq</text>
+                <text x="380" y="122" text-anchor="middle" font-size="10" fill="#666">breakthrough!</text>
+                
+                <circle cx="540" cy="140" r="10" fill="#667eea"/>
+                <text x="540" y="170" text-anchor="middle" font-size="13" font-weight="bold">2015</text>
+                <text x="540" y="190" text-anchor="middle" font-size="11">MemNets</text>
+                <text x="540" y="115" text-anchor="middle" font-size="10" fill="#666">Key-</text>
+                <text x="540" y="127" text-anchor="middle" font-size="10" fill="#666">Value</text>
+                
+                <circle cx="730" cy="140" r="15" fill="#ffd700"/>
+                <text x="730" y="175" text-anchor="middle" font-size="14" font-weight="bold">2017</text>
+                <text x="730" y="195" text-anchor="middle" font-size="12" fill="#ffd700" font-weight="bold">Transformers!</text>
+                <text x="730" y="110" text-anchor="middle" font-size="10" fill="#666">Self-attention</text>
+                <text x="730" y="122" text-anchor="middle" font-size="10" fill="#666">+ Parallel</text>
+                
+                <!-- Highlight the RNN attention milestone -->
+                <rect x="330" y="95" width="100" height="50" fill="none" stroke="#764ba2" stroke-width="2" stroke-dasharray="4,4" rx="5"/>
+            </svg>
+            <p style="text-align: center; color: #666; margin-top: 30px;">
+                <strong>The journey:</strong> From hard pattern matching → soft retrieval → <span style="color: #764ba2; font-weight: bold;">RNN attention breakthrough</span> → key-value separation → efficient self-attention
+            </p>
+            <p style="text-align: center; color: #764ba2; margin-top: 15px; font-weight: 500;">
+                RNN+Attention showed the power of attention, but transformers removed the sequential bottleneck!
+            </p>
+        </div>
+
+        <!-- CONCLUSION -->
+        <h2 style="margin-top: 60px;">🎓 Key Takeaways</h2>
+        
+        <div class="concept-box" style="background: linear-gradient(135deg, #fff9e6 0%, #ffe6e6 100%); border-left: 5px solid #ffd700;">
+            <h3>Understanding Transformers Requires Seeing:</h3>
+            <ol style="font-size: 1.05em; line-height: 1.8;">
+                <li><strong>Geometric thinking:</strong> Networks transform vector spaces, not individual neurons</li>
+                <li><strong>Embeddings as bridges:</strong> Connect discrete symbols to continuous, differentiable mathematics</li>
+                <li><strong>Non-linearity as depth:</strong> Without it, 100 layers = 1 layer</li>
+                <li><strong>Inductive biases as guides:</strong> Built-in assumptions that make learning tractable</li>
+                <li><strong>Attention as soft memory:</strong> Differentiable content-based retrieval that scales</li>
+                <li><strong>Design choices as solutions:</strong> Each component solves a specific problem from earlier approaches</li>
+            </ol>
+        </div>
+        
+        <div class="key-insight" style="margin-top: 40px; font-size: 1.1em;">
+            <strong>Final Insight:</strong> Transformers aren't a black box—they're the <span class="highlight">culmination of decades of research</span> into representing data geometrically, designing efficient attention mechanisms, and stabilizing deep network training. Every design choice has a reason rooted in mathematical principles and empirical lessons learned!
+        </div>
+
+        <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 3px solid #e9ecef;">
+            <p style="color: #999; font-size: 1.1em;">🧠 Created with care • From Foundations to Transformers • 2025</p>
+            <p style="color: #bbb; margin-top: 10px;">Now you're ready to dive into transformer architectures! 🚀</p>
+        </div>
+    </div>
+</body>
+</html>

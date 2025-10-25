@@ -197,9 +197,8 @@ Thumbs.db
 temp/
 tmp/
 
-# Jupyter notebook outputs and notes
-*.html
-*.pdf
+# Jupyter notebook outputs
+# Note: HTML and PDF files are included as they are lecture notes
 
 # Specific to this project
 glove.6B.zip
