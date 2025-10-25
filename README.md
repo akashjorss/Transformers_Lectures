@@ -135,6 +135,7 @@ This repository incorporates educational materials from the following sources:
 
 - **[NYU Deep Learning Spring 2021](https://atcold.github.io/NYU-DLSP21/)** - Course materials by Yann LeCun & Alfredo Canziani
 - **[TensorFlow Word Embeddings Tutorial](https://colab.research.google.com/github/securetorobert/docs/blob/master/site/en/tutorials/keras/intro_word_embeddings.ipynb)** - Original word embeddings tutorial adapted for PyTorch
+- **Claude Sonnet 4.5** - AI assistant used for notes generation and educational content development
 
 We gratefully acknowledge the original authors and maintainers of these educational resources.
 
