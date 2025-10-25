@@ -197,7 +197,7 @@ Thumbs.db
 temp/
 tmp/
 
-# Jupyter notebook outputs
+# Jupyter notebook outputs and notes
 *.html
 *.pdf
 
