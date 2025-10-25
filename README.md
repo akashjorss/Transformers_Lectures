@@ -148,8 +148,7 @@ This project is intended for educational purposes. Please respect the licenses o
 
 - [PyTorch Tutorials](https://pytorch.org/tutorials/)
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762) - Original Transformer paper
-- [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/) - Visual explanation
-- [Hugging Face Course](https://huggingface.co/course) - Modern NLP with transformers
+- [Bishop Deep Learning Textbook](https://www.bishopbook.com) - Lecture content is partially taken from this textbook. 
 
 ---
 
