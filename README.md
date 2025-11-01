@@ -24,9 +24,14 @@ Session_1/
 │   ├── plot_lib.py                       # Custom plotting utilities
 │   ├── sequential_tasks.py                # Sequence modeling utilities
 │   └── *.png                             # Visual assets
-├── From Foundations to Transformers.html   # Lecture notes
+├── Transformer_prerequisites.html         # Lecture notes: From Foundations to Transformers
 ├── Hopfield Networks: Associative Memory.html
-└── hopfield-1982-neural-networks-and-physical-systems-with-emergent-collective-computational-abilities.pdf
+├── hopfield-1982-neural-networks-and-physical-systems-with-emergent-collective-computational-abilities.pdf
+└── data/                                  # Datasets (MNIST, etc.)
+
+Session_2/
+├── byte_pair_encoding_tutorial.ipynb      # BPE tokenization tutorial
+└── attention_in_rnn.pdf                   # Attention mechanisms in RNNs
 ```
 
 ## 🚀 Getting Started
@@ -99,11 +104,15 @@ Session_1/
 ## 📚 Additional Resources
 
 ### Lecture Notes
-- **From Foundations to Transformers.html** - Comprehensive overview
+- **Transformer_prerequisites.html** - Comprehensive overview: From Foundations to Transformers
 - **Hopfield Networks: Associative Memory.html** - Historical context
 
 ### Research Papers
 - **hopfield-1982-neural-networks-and-physical-systems-with-emergent-collective-computational-abilities.pdf** - Original Hopfield network paper
+- **attention_in_rnn.pdf** - Attention mechanisms in RNNs (Session_2)
+
+### Session 2 Materials
+- **Byte Pair Encoding Tutorial** - Tokenization techniques for modern NLP
 
 ## 🛠️ Technical Details
 
