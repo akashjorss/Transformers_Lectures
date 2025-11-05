@@ -31,7 +31,9 @@ Session_1/
 
 Session_2/
 ├── byte_pair_encoding_tutorial.ipynb      # BPE tokenization tutorial
-└── attention_in_rnn.pdf                   # Attention mechanisms in RNNs
+├── Transformers_lecture_notes.pdf         # Comprehensive transformer lecture notes
+├── attention_in_rnn.pdf                   # Attention mechanisms in RNNs
+└── 1906.04341v1.pdf                       # Research paper on transformers
 ```
 
 ## 🚀 Getting Started
@@ -104,12 +106,14 @@ Session_2/
 ## 📚 Additional Resources
 
 ### Lecture Notes
-- **Transformer_prerequisites.html** - Comprehensive overview: From Foundations to Transformers
-- **Hopfield Networks: Associative Memory.html** - Historical context
+- **Transformer_prerequisites.html** - Comprehensive overview: From Foundations to Transformers (Session_1)
+- **Transformers_lecture_notes.pdf** - Comprehensive transformer lecture notes (Session_2)
+- **Hopfield Networks: Associative Memory.html** - Historical context (Session_1)
 
 ### Research Papers
-- **hopfield-1982-neural-networks-and-physical-systems-with-emergent-collective-computational-abilities.pdf** - Original Hopfield network paper
+- **hopfield-1982-neural-networks-and-physical-systems-with-emergent-collective-computational-abilities.pdf** - Original Hopfield network paper (Session_1)
 - **attention_in_rnn.pdf** - Attention mechanisms in RNNs (Session_2)
+- **1906.04341v1.pdf** - Research paper on transformers (Session_2)
 
 ### Session 2 Materials
 - **Byte Pair Encoding Tutorial** - Tokenization techniques for modern NLP
