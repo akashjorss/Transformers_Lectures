@@ -34,6 +34,10 @@ Session_2/
 ├── Transformers_lecture_notes.pdf         # Comprehensive transformer lecture notes
 ├── attention_in_rnn.pdf                   # Attention mechanisms in RNNs
 └── 1906.04341v1.pdf                       # Research paper on transformers
+
+Session_3/
+├── nanoGPT_complete.ipynb                 # Complete GPT implementation from scratch
+└── chinchilla_paper.pdf                   # Training compute-optimal large language models
 ```
 
 ## 🚀 Getting Started
@@ -90,6 +94,18 @@ Session_2/
 - **Techniques:** Word2Vec, GloVe, sentiment analysis
 - **Applications:** Natural language processing, semantic search
 
+### 5. Byte Pair Encoding (`byte_pair_encoding_tutorial.ipynb`)
+- **Learning Objectives:** Master tokenization techniques for modern NLP
+- **Key Concepts:** Subword tokenization, BPE algorithm, vocabulary construction
+- **Techniques:** Byte pair encoding, token merging, vocabulary management
+- **Applications:** Preprocessing for transformer models, efficient tokenization
+
+### 6. NanoGPT Complete (`nanoGPT_complete.ipynb`)
+- **Learning Objectives:** Build a complete GPT model from scratch
+- **Key Concepts:** Transformer decoder architecture, causal attention, language modeling
+- **Techniques:** Multi-head attention, position encoding, autoregressive generation
+- **Applications:** Text generation, language modeling, foundation for LLMs
+
 ## 🎯 Learning Path
 
 ### For Beginners:
@@ -97,6 +113,8 @@ Session_2/
 2. Move to **Sequence Classification** for temporal modeling
 3. Explore **Autoencoders** for unsupervised learning
 4. Finish with **Word Embeddings** for NLP foundations
+5. Learn **Byte Pair Encoding** for modern tokenization
+6. Build **NanoGPT** to understand transformer architecture
 
 ### For Advanced Students:
 - Focus on the mathematical connections between concepts
@@ -114,9 +132,13 @@ Session_2/
 - **hopfield-1982-neural-networks-and-physical-systems-with-emergent-collective-computational-abilities.pdf** - Original Hopfield network paper (Session_1)
 - **attention_in_rnn.pdf** - Attention mechanisms in RNNs (Session_2)
 - **1906.04341v1.pdf** - Research paper on transformers (Session_2)
+- **chinchilla_paper.pdf** - Training compute-optimal large language models (Session_3)
 
 ### Session 2 Materials
 - **Byte Pair Encoding Tutorial** - Tokenization techniques for modern NLP
+
+### Session 3 Materials
+- **NanoGPT Complete** - Complete GPT implementation from scratch
 
 ## 🛠️ Technical Details
 
